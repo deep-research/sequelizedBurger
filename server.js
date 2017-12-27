@@ -1,8 +1,12 @@
 var express = require("express")
 var bodyParser = require("body-parser");
+var path = require("path");
 
 // Choose a port number
 var PORT = process.env.PORT || 3000;
+
+// Sequelize database import
+var db = require(path.join(__dirname, '/models'));
 
 // Initialize Express
 var app = express();
@@ -26,6 +30,8 @@ var routes = require("./controllers/burgers_controller");
 app.use("/", routes);
 
 // Start the server
-app.listen(PORT, function() {
-    console.log("App listening on PORT: " + PORT);
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function() {
+        console.log("App listening on PORT " + PORT);
+    });
 });

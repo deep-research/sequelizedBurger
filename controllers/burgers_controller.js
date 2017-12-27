@@ -1,11 +1,12 @@
 var express = require("express")
-var burgers = require("../models/burgers")
 var router = express.Router();
+var burgers = require("../models/burgers")
+var db = require("../models");
 
 // Get request for the index page
 router.get('/index', function(req, res) {
     // Select all of the burgers
-    burgers.findAll({}).then(function(results) {
+    db.burgers.findAll({}).then(function(results) {
         // Make the data into an object
         var hbsObject = { burgers: results };
 
@@ -17,7 +18,7 @@ router.get('/index', function(req, res) {
 // Post request for the API
 router.post("/api/burgers", function(req, res) {
     // Take the burger name from the web page and send it to the database
-    burgers.create({
+    db.burgers.create({
         burger_name: req.body.burgerName.trim()
     }).then(function(results) {
     // refresh the page
@@ -28,7 +29,7 @@ router.post("/api/burgers", function(req, res) {
 // Put request for the API
 router.put("/api/burgers/:id", function(req, res) {
     // Update a specific burger to being eaten based upon the URL query
-    burgers.update({
+    db.burgers.update({
         devoured: 1
     }, {
         where: {
@@ -45,7 +46,7 @@ router.put("/api/burgers/:id", function(req, res) {
 // Put request for the API
 router.delete("/api/burgers/:id", function(req, res) {
     // Delete a specific burger based upon the URL query
-    burgers.destroy({
+    db.burgers.destroy({
         where: {
             id: req.params.id
         }
