@@ -1,0 +1,79 @@
+img {
+    height: 200px;
+    margin: 0 auto;
+    display: block;
+}
+
+img:hover {
+    opacity: .7;
+}
+
+body {
+    background-color: khaki;
+}
+
+form {
+    max-width: 45%;
+    margin: 0 auto;
+    display: block;
+}
+
+#formIncomplete {
+    color: crimson;
+    padding-left: 3px;
+    font-weight: bold;
+}
+
+.freshBurger:hover, .eatenBurger:hover, #github-card:hover {
+    background-color: rgba(53, 77, 77, 0.123);
+}
+
+.freshBurger:active, .eatenBurger:active {
+    background-color: rgb(230, 250, 227);
+}
+
+.eatenBurger {
+    background-color: lightyellow
+}
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+}
+
+.eatenBurger, .freshBurger {
+    padding: 10px;
+}
+
+#title-link {
+    text-decoration: none;
+    color: rgb(150, 37, 37);
+}
+
+#github-card {
+    background-color: whitesmoke;
+}
+
+#github-link {
+    text-align: center;
+    text-decoration: none;
+}
+
+label {
+    border: solid rgba(84, 84, 105, 0.548) 1px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: rgba(224, 243, 243, 0.562);
+}
+
+#newButton {
+    padding: 12px 50px 12px 50px;
+    background-color: rgb(255, 157, 28);
+    border-color: lightgrey;
+}
+
+#newButton:hover {
+    opacity: .7;
+}

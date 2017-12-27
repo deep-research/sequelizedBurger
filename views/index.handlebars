@@ -1,0 +1,64 @@
+<div class="container">
+    <br>
+    <img src="/assets/img/burger.png" alt="Burger">
+    <br>
+    <h2 class="text-center"><a href="." id="title-link">Eat a Burger!</a></h2>
+    <br>
+
+    <div class="row justify-content-center">
+        {{!-- Fresh burgers --}}
+        <div class="col-4">
+            <h4>Ready to  eat</h4>
+            {{#each burgers}}
+                {{#unless devoured}}
+                    <div class="card">
+                        <div burgerID={{id}} class="card-block freshBurger" title="Click to eat!">
+                            {{id}}. {{burger_name}}
+                        </div>
+                    </div>
+                {{/unless}}
+            {{/each}}
+        </div>
+
+        {{!-- Eaten burgers --}}
+        <div class="col-4">
+            <h4>Already eaten</h4>
+            {{#each burgers}}
+                {{#if this.devoured}}
+                    <div class="card">
+                        <div burgerID={{id}}  class="card-block eatenBurger" title="Click to remove!">
+                            {{id}}. {{burger_name}}
+                        </div>
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
+    <br>
+
+    {{!-- Add a new burger --}}
+    <form class="text-center" action="api/burgers" method="POST">
+        <div class="form-group row">
+            <p id="formIncomplete"></p>
+            <input class="form-control" placeholder="What would you like?" type="text" id="burgerForm" name="burgerName">
+            
+        </div>
+        <button id="newButton" type="submit" class="btn btn-primary">Submit</button>
+        <br><br>
+        <label for="burgerForm">Use the form to make an order, <br>and click on a burger to eat it!</label>
+    </form>
+    <br>
+</div>
+<div class="row float-sm-left">
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <a title="See the code!" target="_blank" id="github-link" href="https://github.com/deep-research/burger">
+                <li class="list-group-item" id="github-card">
+                    Github Repository
+                </li>
+            </a>
+        </ul>
+    </div>
+</div>
+<br><br>
+<br><br>
