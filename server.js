@@ -1,12 +1,12 @@
 var express = require("express")
 var bodyParser = require("body-parser");
-var path = require("path");
 
-// Choose a port number
+// Express app initialization
+var app = express();
 var PORT = process.env.PORT || 3000;
 
 // Sequelize database import
-var db = require(path.join(__dirname, '/models'));
+var db = require("./models");
 
 // Initialize Express
 var app = express();
@@ -14,7 +14,7 @@ var app = express();
 // Use the public folder
 app.use(express.static("public"));
 
-// Intialize body parser
+// Initialize body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -25,9 +25,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Initialize the routing file
-var routes = require("./controllers/burgers_controller");
-
-app.use("/", routes);
+app.use(express.static("public"));
+require("./routes/api-routes.js")(app);
 
 // Start the server
 db.sequelize.sync().then(function() {
