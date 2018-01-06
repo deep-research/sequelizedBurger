@@ -1,15 +1,12 @@
 var express = require("express")
 var bodyParser = require("body-parser");
 
-// Express app initialization
+// Initialize Express
 var app = express();
 var PORT = process.env.PORT || 3000;
 
 // Sequelize database import
 var db = require("./models");
-
-// Initialize Express
-var app = express();
 
 // Use the public folder
 app.use(express.static("public"));
